@@ -5,38 +5,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Shield, UserCheck, Briefcase } from 'lucide-react';
 
-// Inline SVG badge for text-only credential items
-const BadgeLogo = ({ label, sublabel, color = '#1e3a5f' }: { label: string; sublabel?: string; color?: string }) => (
-  <div
-    style={{
-      display: 'inline-flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      border: `2px solid ${color}`,
-      borderRadius: 8,
-      padding: '6px 14px',
-      minWidth: 110,
-      height: 64,
-      background: '#fff',
-    }}
-  >
-    <span style={{ fontSize: 15, fontWeight: 800, color, letterSpacing: 1, lineHeight: 1 }}>{label}</span>
-    {sublabel && <span style={{ fontSize: 10, fontWeight: 600, color: '#64748b', marginTop: 3, letterSpacing: 0.5 }}>{sublabel}</span>}
-  </div>
-);
-
-type CredLogo =
-  | { type: 'img'; src: string; alt: string }
-  | { type: 'badge'; label: string; sublabel?: string; color?: string; alt: string };
-
-const CRED_LOGOS: CredLogo[] = [
-  { type: 'badge', label: 'MSME', sublabel: 'Certified', color: '#0f4c81', alt: 'MSME Certified' },
-  { type: 'badge', label: 'TELANGANA', sublabel: 'Govt. Registered', color: '#7b1c1c', alt: 'Government of Telangana' },
-  { type: 'img', src: '/iso.png', alt: 'ISO Certified' },
-  { type: 'img', src: '/epfo.png', alt: 'EPFO Registered' },
-  { type: 'img', src: '/esic.png', alt: 'ESIC Registered' },
-  { type: 'img', src: '/gst.png', alt: 'GST Registered' },
+const CRED_LOGOS = [
+  { src: '/iso.png', alt: 'ISO Certified' },
+  { src: '/epfo.png', alt: 'EPFO Registered' },
+  { src: '/esic.png', alt: 'ESIC Registered' },
+  { src: '/gst.png', alt: 'GST Registered' },
 ];
 
 import { TestimonialsSection } from '../components/TestimonialsSection';
@@ -155,15 +128,11 @@ export default function Home() {
             {/* Double array to create seamless loop */}
             {[...CRED_LOGOS, ...CRED_LOGOS, ...CRED_LOGOS, ...CRED_LOGOS].map((logo, idx) => (
               <div key={idx} className="flex items-center justify-center transition-transform hover:scale-105 duration-300">
-                {logo.type === 'img' ? (
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="h-14 sm:h-16 md:h-20 w-auto object-contain drop-shadow-sm mix-blend-multiply dark:mix-blend-normal"
-                  />
-                ) : (
-                  <BadgeLogo label={logo.label} sublabel={logo.sublabel} color={logo.color} />
-                )}
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-14 sm:h-16 md:h-20 w-auto object-contain drop-shadow-sm mix-blend-multiply dark:mix-blend-normal"
+                />
               </div>
             ))}
           </motion.div>
