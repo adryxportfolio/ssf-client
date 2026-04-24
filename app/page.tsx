@@ -6,10 +6,10 @@ import Image from 'next/image';
 import { ArrowRight, Shield, UserCheck, Briefcase } from 'lucide-react';
 
 const CRED_LOGOS = [
-  { src: '/iso.png', alt: 'ISO Certified' },
-  { src: '/epfo.png', alt: 'EPFO Registered' },
-  { src: '/esic.png', alt: 'ESIC Registered' },
-  { src: '/gst.png', alt: 'GST Registered' },
+  { src: '/logos/iso.png', alt: 'ISO Certified' },
+  { src: '/logos/epfo.png', alt: 'EPFO Registered' },
+  { src: '/logos/esic.png', alt: 'ESIC Registered' },
+  { src: '/logos/gst.png', alt: 'GST Registered' },
 ];
 
 import { TestimonialsSection } from '../components/TestimonialsSection';
